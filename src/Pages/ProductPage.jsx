@@ -7,16 +7,19 @@ const ProductPage = () => {
 
   const [isLoading, setIsLoading] = useState(true)
   const [product, setProduct] = useState()
+  const [reviews, setReviews] = useState([])
+
 
   const fetchProduct = async () => {
     try {
-      const response = await fetch(`http://localhost:5005/products/${productId}`)
+      const response = await fetch(`http://localhost:5005/products/${productId}/withReviews`)
       const parsed = await response.json()
       if (parsed === null) {
         navigate('/404')
       } else {
         console.log(parsed)
-        setProduct(parsed)
+        setProduct(parsed.selectedProduct)
+        setReviews(parsed.allReviews)
         setIsLoading(false)
       }
     } catch (error) {
@@ -47,6 +50,16 @@ const ProductPage = () => {
       <button type='button' onClick={handleDelete}>
         Delete
       </button>
+
+      {reviews.map(review => {
+        return (
+          <div key={review._id}>
+            <h3>{review.review}</h3>
+            <h3>{review.rating}</h3>
+            <p>Added by: {review.addedBy}</p>
+          </div>
+        );
+      })}
     </>
   )
 }
