@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import iphoneImg from '/images/iphone.png'
+import pixelImg from '/images/pixel.png'
+
+
 
 const ProductPage = () => {
   const { productId } = useParams()
@@ -8,6 +12,11 @@ const ProductPage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [product, setProduct] = useState()
   const [reviews, setReviews] = useState([])
+  const [itemImage, setItemImage] = useState()
+
+
+
+
 
 
   const fetchProduct = async () => {
@@ -21,16 +30,27 @@ const ProductPage = () => {
         setProduct(parsed.selectedProduct)
         setReviews(parsed.allReviews)
         setIsLoading(false)
+
+        /*if (product.brand === 'Google') {
+          setItemImage(pixelImg)
+        } else if (productId.brand === 'Apple') {
+          setItemImage(iphoneImg)
+        }*/
+ 
       }
     } catch (error) {
       console.log(error)
     }
   }
 
+
+
   useEffect(() => {
     fetchProduct()
   }, [productId])
 
+
+ 
   const handleDelete = async () => {
     await fetch(`http://localhost:5005/products/delete/${productId}`, {
       method: 'DELETE',
@@ -38,11 +58,20 @@ const ProductPage = () => {
     navigate('/')
   }
 
-  return isLoading ? (
+ 
+  return isLoading ? ( 
+
     <h1>Loading...</h1>
   ) : (
+
+    
+    
     <>
+
+
+
       <h1>{product.title}</h1>
+      <img src={itemImage} height = '400px'  />
       <p>Price: {product.price}</p>
       <p>Description: {product.description}</p>
       <p>Category: {product.category}</p>
@@ -66,5 +95,6 @@ const ProductPage = () => {
     </>
   )
 }
+
 
 export default ProductPage

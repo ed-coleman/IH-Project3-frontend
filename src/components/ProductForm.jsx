@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 export default function ProductForm({
   heading,
   productTitle = "",
@@ -9,6 +10,7 @@ export default function ProductForm({
   productCategory = "",
   productDescription = "",
   productBrand = '',
+  productImage = '',
   isUpdating = false,
   productId,
 }) {
@@ -18,6 +20,7 @@ export default function ProductForm({
   const [category, setCategory] = useState(productCategory);
   const [description, setDescription] = useState(productDescription)
   const [brand, setBrand] = useState(productBrand)
+  const [image, setImage] = useState()
   
 
 
@@ -34,7 +37,7 @@ export default function ProductForm({
             "Content-Type": "application/json",
           },
           
-          body: JSON.stringify({ title, price, category, brand, description }),
+          body: JSON.stringify({ title, price, category, brand, description, image }),
         }
         
       );
