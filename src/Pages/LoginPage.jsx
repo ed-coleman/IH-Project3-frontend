@@ -9,7 +9,7 @@ import { useContext } from "react";
 export default function LoginPage() {
     const navigate = useNavigate()
 
-    const { setToken } = useContext(SessionContext)
+    const { setToken, user, setUser, verifyToken, token } = useContext(SessionContext)
 
   const [userName, setUserName] = useState("");
   const [passwordHash, setPasswordHash] = useState("");
@@ -17,7 +17,7 @@ export default function LoginPage() {
 
   const handleSubmit = async () => {
 
-    console.log({ userName, email, passwordHash });
+    console.log({ userName });
     try {
     const response = await fetch("http://localhost:5005/login", {
       method: "POST",
@@ -27,11 +27,12 @@ export default function LoginPage() {
       body: JSON.stringify({ userName, email, passwordHash }),
     });
     const parsed = await response.json();
-    console.log(parsed, "⭐️");
+
+    
     setToken(parsed.token)
-    console.log(response.status);
+    verifyToken(token)
     if (response.status === 200) {
-      navigate("/");
+      navigate("/profile");
     }} catch (error) {
         console.log(error)
     }
@@ -40,6 +41,7 @@ export default function LoginPage() {
 
   return (
     <>
+    
       <div>Sign Up</div>
       <AuthForm
         userName={userName}

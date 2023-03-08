@@ -7,30 +7,26 @@ export default function HomePage() {
     try {
       const response = await fetch("http://localhost:5005/products");
       const parsed = await response.json();
-      setProducts(parsed); 
+      setProducts(parsed);
     } catch (error) {
-    console.log(error)
+      console.log(error);
+    }
   };
-}
 
   useEffect(() => {
     fetchProducts();
   }, []);
 
- return (
-  <>
-    <h1>All Products</h1>
-    <ul>
-      {products.map(product => (
-        <li key={product._id}>
-          <Link to={`/products/${product._id}`}>{product.title}</Link>
-          
-        </li>
-      ))}
-    </ul>
-  </>
- )
-
-  
- 
+  return (
+    <>
+      <h1>All Products</h1>
+      <ul>
+        {products.map((product) => (
+          <li key={product._id}>
+            <Link to={`/products/${product._id}`}>{product.title}</Link>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 }

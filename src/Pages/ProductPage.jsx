@@ -6,6 +6,7 @@ import { useContext } from "react";
 const ProductPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
+
   const { setCart } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(true);
   const [product, setProduct] = useState();
@@ -46,7 +47,6 @@ const ProductPage = () => {
       return [...prevValue, { ...product }];
     });
     navigate("/checkout");
-    console.log("trying to go to checkout");
   };
 
   return isLoading ? (
@@ -67,8 +67,7 @@ const ProductPage = () => {
       <button type="button" onClick={handlePurchase}>
         Buy product
       </button>
-
-      <h1>Reviews:</h1>
+      
       {reviews.map((review) => {
         return (
           <div key={review._id}>
