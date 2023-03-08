@@ -16,7 +16,11 @@ function App() {
   return (
     <AppShell
       padding="md"
-      header={<Header height={60} p="xs">{<img src={logoBlack} alt="logo" style={{width: "45px"}}/>}</Header>}
+      header={<Header height={60} p="xs">{}
+      <a href="/">
+        <img src={logoBlack} alt="logo" style={{width: "45px"}}></img>
+      </a>
+      </Header>}
       styles={(theme) => ({
         main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
       })}
