@@ -17,7 +17,7 @@ export default function ProductForm({
   setProfile,
 }) {
   const navigate = useNavigate();
-  const { user } = useContext(SessionContext);
+  const { user, token } = useContext(SessionContext);
   const [title, setTitle] = useState(productTitle);
   const [price, setPrice] = useState(productPrice);
   const [category, setCategory] = useState(productCategory);
@@ -28,14 +28,15 @@ export default function ProductForm({
     try {
       console.log(isUpdating);
       const response = await fetch(
-        `http://localhost:5005/products/${
-          isUpdating ? `update/${productId}` : ""
+        `http://localhost:5005/products${
+          isUpdating ? `/update/${productId}` : ""
         }`,
         {
           method: isUpdating ? "PUT" : "POST",
 
           headers: {
             "Content-Type": "application/json",
+            authorization: `Bearer ${token}`
           },
 
           body: JSON.stringify({

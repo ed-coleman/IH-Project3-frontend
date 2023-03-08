@@ -11,7 +11,7 @@ useEffect(() => {
     try {
       const response = await fetch("http://localhost:5005/profile", {
         headers: {
-          Authorization: `Bearer ${token}`,
+          authorization: `Bearer ${token}`,
         }
       })
       const parsed = await response.json()
@@ -28,8 +28,8 @@ useEffect(() => {
 }, [token])
 return profile ? (
   <>
-    <h1>{profile.userName}</h1>
-    <p>{profile.email}</p>
+  profile.listedproducts.map
+    <p></p>
 
     
   </>

@@ -11,9 +11,10 @@ const SessionContextProvider = ({ children }) => {
 
     const verifyToken = async (jwt) => {
     const response = await fetch("http://localhost:5005/verify", {
-      method: "GET",
+     
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        method: "GET",
+        authorization: `Bearer ${jwt}`,
       },
     });
     const parsed = await response.json()
@@ -21,7 +22,7 @@ const SessionContextProvider = ({ children }) => {
     if (response.status === 200) {
       console.log('response json', parsed)
       setToken(jwt);
-      setUser(parsed)
+      setUser(parsed.data)
       setIsLoading(false)
       console.log(token);
       setisAuthenticated(true);

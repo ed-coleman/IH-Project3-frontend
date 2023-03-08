@@ -27,10 +27,10 @@ export default function LoginPage() {
       body: JSON.stringify({ userName, email, passwordHash }),
     });
     const parsed = await response.json();
-
+    console.log("login stuff",parsed)
     
     setToken(parsed.token)
-    verifyToken(token)
+    
     if (response.status === 200) {
       navigate("/profile");
     }} catch (error) {
