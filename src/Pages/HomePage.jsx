@@ -17,16 +17,21 @@ export default function HomePage() {
     fetchProducts();
   }, []);
 
-  return (
-    <>
-      <h1>All Products</h1>
-      <ul>
-        {products.map((product) => (
-          <li key={product._id}>
-            <Link to={`/products/${product._id}`}>{product.title}</Link>
-          </li>
-        ))}
-      </ul>
-    </>
-  );
+ return (
+  <>
+    <h1>Browse all of our products:</h1>
+    <ul style={{listStyleType: "none", display: "flex", flexWrap: "wrap"}}>
+      {products.map(product => (
+        <li key={product._id} style={{flex: "0 0 33.333333%"}}>
+          <div style={{margin: "auto", width: "250px", height: "300px", border: "3px solid black", padding: "10px", margin: "10px"}}>
+          <Link to={`/products/${product._id}`}><p style={{color: "black"}}>{product.title}</p></Link>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </>
+ )
+
+  
+ 
 }
