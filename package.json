@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@adyen/adyen-web": "^5.35.0",
     "@emotion/react": "^11.10.6",
     "@mantine/core": "^6.0.1",
     "@mantine/hooks": "^6.0.1",
