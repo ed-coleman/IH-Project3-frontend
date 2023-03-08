@@ -19,12 +19,11 @@ export default function HomePage() {
 
  return (
   <>
-    <h1>All Products</h1>
-    <ul>
+    <h1>Browse all of our products:</h1>
+    <ul style={{listStyleType: "none"}}>
       {products.map(product => (
         <li key={product._id}>
-          <Link to={`/products/${product._id}`}>{product.title}</Link>
-          
+          <Link to={`/products/${product._id}`}><p style={{color: "black"}}>{product.title}</p></Link> 
         </li>
       ))}
     </ul>
