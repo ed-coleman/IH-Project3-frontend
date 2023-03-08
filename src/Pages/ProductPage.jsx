@@ -38,6 +38,12 @@ const ProductPage = () => {
     navigate('/')
   }
 
+  const handlePurchase=()=>
+  {
+    navigate('/checkout')
+  }
+
+
   return isLoading ? (
     <h1>Loading...</h1>
   ) : (
@@ -53,7 +59,11 @@ const ProductPage = () => {
       <button type='button' onClick={handleDelete}>
         Delete
       </button>
-
+      <button type='button' onClick={handlePurchase}>
+      Buy product
+      </button>
+      
+      <h1>Reviews:</h1>
       {reviews.map(review => {
         return (
           <div key={review._id}>
