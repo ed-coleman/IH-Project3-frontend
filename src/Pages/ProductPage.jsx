@@ -1,48 +1,53 @@
-import { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { CartContext } from "../Contexts/CartContext";
+import { useContext } from "react";
 
 const ProductPage = () => {
-  const { productId } = useParams()
-  const navigate = useNavigate()
-
-  const [isLoading, setIsLoading] = useState(true)
-  const [product, setProduct] = useState()
-  const [reviews, setReviews] = useState([])
-
+  const { productId } = useParams();
+  const navigate = useNavigate();
+  const { setCart } = useContext(CartContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const [product, setProduct] = useState();
+  const [reviews, setReviews] = useState([]);
 
   const fetchProduct = async () => {
     try {
-      const response = await fetch(`http://localhost:5005/products/${productId}/withReviews`)
-      const parsed = await response.json()
+      const response = await fetch(
+        `http://localhost:5005/products/${productId}/withReviews`
+      );
+      const parsed = await response.json();
       if (parsed === null) {
-        navigate('/404')
+        navigate("/404");
       } else {
-        console.log(parsed)
-        setProduct(parsed.selectedProduct)
-        setReviews(parsed.allReviews)
-        setIsLoading(false)
+        console.log(parsed);
+        setProduct(parsed.selectedProduct);
+        setReviews(parsed.allReviews);
+        setIsLoading(false);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchProduct()
-  }, [productId])
+    fetchProduct();
+  }, [productId]);
 
   const handleDelete = async () => {
     await fetch(`http://localhost:5005/products/delete/${productId}`, {
-      method: 'DELETE',
-    })
-    navigate('/')
-  }
+      method: "DELETE",
+    });
+    navigate("/");
+  };
 
-  const handlePurchase=()=>
-  {
-    navigate('/checkout')
-  }
-
+  const handlePurchase = () => {
+    setCart((prevValue) => {
+      return [...prevValue, { ...product }];
+    });
+    navigate("/checkout");
+    console.log("trying to go to checkout");
+  };
 
   return isLoading ? (
     <h1>Loading...</h1>
@@ -54,17 +59,17 @@ const ProductPage = () => {
       <p>Category: {product.category}</p>
       <p>Brand: {product.brand}</p>
       <Link to={`/products/update/${product._id}`}>
-        <button type='button'>Update</button>
+        <button type="button">Update</button>
       </Link>
-      <button type='button' onClick={handleDelete}>
+      <button type="button" onClick={handleDelete}>
         Delete
       </button>
-      <button type='button' onClick={handlePurchase}>
-      Buy product
+      <button type="button" onClick={handlePurchase}>
+        Buy product
       </button>
-      
+
       <h1>Reviews:</h1>
-      {reviews.map(review => {
+      {reviews.map((review) => {
         return (
           <div key={review._id}>
             <h3>{review.review}</h3>
@@ -74,7 +79,7 @@ const ProductPage = () => {
         );
       })}
     </>
-  )
-}
+  );
+};
 
-export default ProductPage
+export default ProductPage;
