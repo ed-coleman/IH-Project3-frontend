@@ -53,31 +53,39 @@ const ProductPage = () => {
     <h1>Loading...</h1>
   ) : (
     <>
-      <h1>{product.title}</h1>
-      <p>Price: {product.price}</p>
-      <p>Description: {product.description}</p>
-      <p>Category: {product.category}</p>
-      <p>Brand: {product.brand}</p>
-      <Link to={`/products/update/${product._id}`}>
-        <button type="button">Update</button>
-      </Link>
-      <button type="button" onClick={handleDelete}>
-        Delete
-      </button>
-      <button type="button" onClick={handlePurchase}>
-        Buy product
-      </button>
+    <div style={{width: "100%", height: "400px", display: "flex", justifyContent: "center"}}>
+      <div style={{margin: "auto", width: "350px", height: "400px", border: "3px solid black", padding: "10px", margin: "10px"}}>
+        <h1>{product.title}</h1>
+        <p>Price: {product.price}</p>
+        <p>Description: {product.description}</p>
+        <p>Category: {product.category}</p>
+        <p>Brand: {product.brand}</p>
+        <Link to={`/products/update/${product._id}`}>
+          <button type="button">Update</button>
+        </Link>
+        <button type="button" onClick={handleDelete}>Delete</button>
+        <br></br>
+        <br></br>
+        <button type="button" onClick={handlePurchase}>Buy now with 1 Click</button>
+      </div>
+    </div>
+    
+    <br></br>
 
       <h1>Reviews:</h1>
+      <ul style={{listStyleType: "none", display: "flex", flexWrap: "wrap"}}>
       {reviews.map((review) => {
         return (
-          <div key={review._id}>
-            <h3>{review.review}</h3>
-            <h3>{review.rating}</h3>
-            <p>Added by: {review.addedBy}</p>
-          </div>
+          <li key={product._id} style={{flex: "0 0 33.333333%"}}>
+            <div key={review._id} style={{margin: "auto", width: "250px", height: "300px", border: "3px solid black", padding: "10px", margin: "10px"}}>
+              <h3>{review.review}</h3>
+              <h3>{review.rating}</h3>
+              <p>Added by: {review.addedBy}</p>
+            </div>
+          </li>
         );
       })}
+      </ul>
     </>
   );
 };
