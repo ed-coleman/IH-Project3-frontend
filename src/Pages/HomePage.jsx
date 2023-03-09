@@ -25,7 +25,7 @@ export default function HomePage() {
         <li key={product._id} style={{flex: "0 0 33.333333%"}}>
           <div style={{width: "250px", height: "300px", border: "3px solid black", padding: "10px", margin: "10px"}}>
           <Link to={`/products/${product._id}`}><p style={{color: "black"}}>{product.title}</p>
-          <img style={{width: "200px", height: "auto", color: "black"}} src={product.image} alt="this is a pic"/>
+          <img style={{width: "auto", height: "250", color: "black"}} src={product.image} alt="this is a pic"/>
           <p style={{color: "black"}}>€{product.price}</p>
           </Link>
           </div>
