@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SessionContext } from "../Contexts/SessionContext";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 
 export default function LoginPage() {
@@ -52,7 +53,8 @@ export default function LoginPage() {
         setEmail={setEmail}
         onSubmit={handleSubmit}
         isLogin
-      />
+        />
+        <Link to='/signUp'>Not A User? Sign Up!</Link>
     </>
   );
   }

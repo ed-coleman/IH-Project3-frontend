@@ -5,11 +5,11 @@ import { Navigate } from 'react-router-dom'
 export default function PrivateRoute({children}) {
 
 
-const { isLoading, isAuthenticated } = useContext(SessionContext)
+const { isLoading, isAuthenticated, token } = useContext(SessionContext)
 
 
 
-    if (!isLoading && !isAuthenticated) {
+    if (!isLoading && !isAuthenticated || !token) {
         return <Navigate to='/login' />
     }
     

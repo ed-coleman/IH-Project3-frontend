@@ -68,7 +68,7 @@ export default function ProductForm({
       <h1>{isUpdating ? "Update Your Listing" : "Sell Something"}</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Produce Name{" "}
+          Product Name{" "}
           <input
             type="text"
             value={title}

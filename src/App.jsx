@@ -14,6 +14,7 @@ import logoBlack from "./assets/logo-black.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginButton from "./components/LoginButton";
+import ReviewPage from "./components/ReviewForm"; 
 
 
 
@@ -56,6 +57,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path = '/profile' element ={<PrivateRoute><ProfilePage profile = {profile} setProfile = {setProfile} /></PrivateRoute>} />
         <Route path = '/checkout' element ={<CheckoutPage />} />
+        <Route path = '/products/:productId/review' element ={<ReviewPage />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />     
       </Routes>
     </div>

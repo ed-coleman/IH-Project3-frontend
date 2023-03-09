@@ -64,6 +64,9 @@ const ProductPage = () => {
           <button type="button">Update</button>
         </Link>
         <button type="button" onClick={handleDelete}>Delete</button>
+        <Link to={`/products/${product._id}/review`}>
+        <button type="button">Review This</button>
+        </Link>
         <br></br>
         <br></br>
         <button type="button" onClick={handlePurchase}>Buy now with 1 Click</button>
