@@ -29,11 +29,17 @@ export default function ProfilePage({ profile, setProfile }) {
       <ul>
         {profile.listedProducts ? profile.listedProducts.map((product) => {
           return (
-            <li>
-              <div>
-                <p>{product.title}</p>
-              </div>
-            </li>
+            
+            <div>
+            <h1>{product.title}</h1>
+            <img style={{width: "90%", height: "auto", color: "black"}} src={product.image} alt="this is a pic"/>
+        <p>Price: {product.price}</p>
+        <p>Description: {product.description}</p>
+        <p>Category: {product.category}</p>
+        <p>Brand: {product.brand}</p>
+        
+        </div>
+            
           );
         }):(<p>no products</p>)}
       </ul>
