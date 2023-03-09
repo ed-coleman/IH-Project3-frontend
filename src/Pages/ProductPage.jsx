@@ -80,7 +80,7 @@ const ProductPage = () => {
             <div key={review._id} style={{width: "250px", height: "300px", border: "3px solid black", padding: "10px", margin: "10px"}}>
               <h3>{review.review}</h3>
               <h3>{review.rating}</h3>
-              <p>Added by: {review.addedBy}</p>
+              {/* <p>Added by: {review.addedBy}</p> */}
             </div>
           </li>
         );
