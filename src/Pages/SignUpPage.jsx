@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AuthForm from "../components/AuthForm";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function SignUpPage() {
   const navigate = useNavigate()
@@ -36,6 +37,7 @@ export default function SignUpPage() {
         setEmail={setEmail}
         onSubmit={handleSubmit}
       />
+      <Link to='/login'>Already A User? Log In</Link>
     </>
   );
 }

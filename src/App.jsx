@@ -12,6 +12,10 @@ import CheckoutPage from "./Pages/CheckoutPage";
 import { MantineProvider, Text, AppShell, Header } from '@mantine/core';
 import logoBlack from "./assets/logo-black.svg";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import LoginButton from "./components/LoginButton";
+
+
 
 
 
@@ -25,7 +29,10 @@ function App() {
       <div>
       <a href="/">
         <img src={logoBlack} alt="logo" style={{width: "45px"}}></img>
-        <button type="button" style={{float: "right"}}>Sign up</button>
+        <LoginButton />
+        <Link to='/profile'>
+        <button type="button" style={{float: "right"}}>Profile</button>
+        </Link>
       </a>
       </div>
       </Header>}
@@ -39,7 +46,7 @@ function App() {
     }}>
     <div className="App">
     <Text><h1>Welcome!</h1></Text>
-      <Link to="/profile"><p style={{color: "black"}}>Click here to sign up/log in</p></Link>
+      <Link to="/profile"></Link>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products/:productId" element={<ProductPage />} />
