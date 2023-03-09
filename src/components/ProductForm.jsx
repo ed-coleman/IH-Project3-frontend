@@ -5,7 +5,6 @@ import { SessionContext } from "../Contexts/SessionContext";
 import { useContext } from "react";
 
 export default function ProductForm({
-  heading,
   productTitle = "",
   productPrice = 0,
   productCategory = "",
@@ -13,8 +12,7 @@ export default function ProductForm({
   productBrand = "",
   isUpdating = false,
   productId,
-  profile,
-  setProfile,
+  productImage = ""
 }) {
   const navigate = useNavigate();
   const { user, token } = useContext(SessionContext);
@@ -23,6 +21,8 @@ export default function ProductForm({
   const [category, setCategory] = useState(productCategory);
   const [description, setDescription] = useState(productDescription);
   const [brand, setBrand] = useState(productBrand);
+  const [image, setImage] = useState(productImage);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -41,11 +41,11 @@ export default function ProductForm({
 
           body: JSON.stringify({
             title,
-            price,
-            category,
-            brand,
             description,
-            profile,
+            price,
+            brand,
+            category,
+            image
           }),
         }
       );
@@ -105,6 +105,14 @@ export default function ProductForm({
             type="string"
             value={brand}
             onChange={(event) => setBrand(event.target.value)}
+          />
+        </label>
+        <label>
+          Image{""}
+          <input
+            type="string"
+            value={image}
+            onChange={(event) => setImage(event.target.value)}
           />
         </label>
         <button type="submit">{isUpdating ? "Update" : "Sell"}</button>
