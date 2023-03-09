@@ -17,7 +17,7 @@ export default function CheckoutPage() {
   const { cart } = useContext(CartContext);
   const [currency, setCurrency] = useState('EUR');
   const [value, setValue] = useState(cart[0].price*100);
-  const [countryCode, setCountryCode] = useState('NL');
+  const [countryCode, setCountryCode] = useState('FR');
   const [configuration, setConfiguration] = useState(initialConfig);
   const clientKey = 'test_MQB2CKRYYFGMZJZXNJ4RWRXHIAJCL4AW';
   const [hasConfig, setHasConfig] = useState(false);
