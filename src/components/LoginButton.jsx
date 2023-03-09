@@ -9,14 +9,14 @@ export default function LoginButton() {
   const { token, setToken, isAuthenticated} = useContext(SessionContext)
 
   const logOutUser = () => {
-    setToken = false
+    setToken(null)
     console.log('User logged out, token was deleted/ Token: ', token)
   }
 
   if (token) {
     return (
       <Link to={token ? '/' : '/login'}>
-      <button  onClick={logOutUser} type=" button">{token ? 'Log Out' : 'Login'}</button>
+      <button  style={{float: 'right'}} onClick={logOutUser} type=" button">{token === null ? 'Log In' : 'Log Out'}</button>
       </Link>
       
 
@@ -27,7 +27,7 @@ export default function LoginButton() {
   return (
 
     <Link to='/signUp'>
-    <button  type=" button">Sign Up</button>
+    <button style={{float: 'right'}} type=" button">Sign Up</button>
     </Link>
    
   )
