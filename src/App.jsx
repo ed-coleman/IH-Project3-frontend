@@ -21,9 +21,12 @@ function App() {
     <AppShell
       padding="md"
       header={<Header height={60} p="xs">{}
+      <div>
       <a href="/">
         <img src={logoBlack} alt="logo" style={{width: "45px"}}></img>
+        <button type="button" style={{float: "right"}}>Sign up</button>
       </a>
+      </div>
       </Header>}
       styles={(theme) => ({
         main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
