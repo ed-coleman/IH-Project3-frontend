@@ -10,7 +10,8 @@ import ProfilePage from "./Pages/ProfilePage";
 import PrivateRoute from "./components/PrivateRoute";
 import CheckoutPage from "./Pages/CheckoutPage";
 import { MantineProvider, Text, AppShell, Header } from '@mantine/core';
-import logoBlack from "../public/logo-black.svg";import { useState } from "react";
+import logoBlack from "./assets/logo-black.svg";
+import { useState } from "react";
 
 
 

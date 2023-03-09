@@ -54,7 +54,7 @@ const ProductPage = () => {
   ) : (
     <>
     <div style={{width: "100%", height: "400px", display: "flex", justifyContent: "center"}}>
-      <div style={{margin: "auto", width: "350px", height: "400px", border: "3px solid black", padding: "10px", margin: "10px"}}>
+      <div style={{width: "350px", height: "400px", border: "3px solid black", padding: "10px", margin: "10px"}}>
         <h1>{product.title}</h1>
         <p>Price: {product.price}</p>
         <p>Description: {product.description}</p>
@@ -77,7 +77,7 @@ const ProductPage = () => {
       {reviews.map((review) => {
         return (
           <li key={product._id} style={{flex: "0 0 33.333333%"}}>
-            <div key={review._id} style={{margin: "auto", width: "250px", height: "300px", border: "3px solid black", padding: "10px", margin: "10px"}}>
+            <div key={review._id} style={{width: "250px", height: "300px", border: "3px solid black", padding: "10px", margin: "10px"}}>
               <h3>{review.review}</h3>
               <h3>{review.rating}</h3>
               <p>Added by: {review.addedBy}</p>
